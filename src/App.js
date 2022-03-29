@@ -5,10 +5,11 @@ const App = () => {
     { name: 'Arto Hellas' }
   ]) 
   const [newName, setNewName] = useState('')
+  const [newNumber, setNewNumber] = useState('')
 
-  const handleNameInput = (event) => {
-    setNewName(event.target.value)
-  }
+  const handleNameInput = (event) => setNewName(event.target.value)
+
+  const handleNumberInput = (event) => setNewNumber(event.target.value)
 
   const addPerson = (event) => {
     event.preventDefault()
@@ -17,17 +18,20 @@ const App = () => {
     const duplicatePerson = persons.find((personObject) => personObject.name === newName)
     if (duplicatePerson !== undefined) {
        alert(`Error: ${newName} has already been added to the phonebook.`)
+       setNewNumber('')
        return setNewName('')
       }
 
     const personObject = {
-      name: newName
+      name: newName,
+      number: newNumber
     }
     setPersons(persons.concat(personObject))
     setNewName('')
+    setNewNumber('')
   }
 
-  const personList = persons.map((person) => <p key={person.name}>{person.name}</p>)
+  const personList = persons.map((person) => <p key={person.name}>{person.name} {person.number}</p>)
 
   return (
     <div>
@@ -35,7 +39,9 @@ const App = () => {
       <form onSubmit={addPerson}>
         <div>
           name: <input value={newName} onChange={handleNameInput} />
+          number: <input value={newNumber} onChange={handleNumberInput}/>
         </div>
+
         <div>
           <button type="submit">add</button>
         </div>
