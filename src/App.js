@@ -12,6 +12,14 @@ const App = () => {
 
   const addPerson = (event) => {
     event.preventDefault()
+
+    // prevent user from adding duplicate persons to phonebook
+    const duplicatePerson = persons.find((personObject) => personObject.name === newName)
+    if (duplicatePerson !== undefined) {
+       alert(`Error: ${newName} has already been added to the phonebook.`)
+       return setNewName('')
+      }
+
     const personObject = {
       name: newName
     }
