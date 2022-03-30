@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import AddContactForm from './Components/AddContactForm'
 
 const App = () => {
   const [persons, setPersons] = useState([{ name: 'Arto Hellas' }])
@@ -32,31 +33,32 @@ const App = () => {
     setNewNumber('')
   }
 
-  const personList = persons.filter((person) => person.name.toLowerCase().includes(searchFilter.toLowerCase())).map((person) => (
-    <p key={person.name}>
-      {person.name} {person.number}
-    </p>
-  ))
+  const personList = persons
+    .filter((person) =>
+      person.name.toLowerCase().includes(searchFilter.toLowerCase())
+    )
+    .map((person) => (
+      <p key={person.name}>
+        {person.name} {person.number}
+      </p>
+    ))
 
   return (
     <div>
       <h1>Phonebook</h1>
       <h2>Filter Contacts</h2>
-        <div>
-          Filter your contacts by search term: <input onChange={handleFilter} />
-        </div>
+      <div>
+        Filter your contacts by search term: <input onChange={handleFilter} />
+      </div>
 
       <h2>Add Contact</h2>
-      <form onSubmit={addPerson}>
-        <div>
-          name: <input value={newName} onChange={handleNameInput} />
-          number: <input value={newNumber} onChange={handleNumberInput} />
-        </div>
-
-        <div>
-          <button type='submit'>add</button>
-        </div>
-      </form>
+      <AddContactForm
+        name={newName}
+        number={newNumber}
+        handleNameInput={handleNameInput}
+        handleNumberInput={handleNumberInput}
+        addPerson={addPerson}
+      />
       <h2>Contact List</h2>
       <div>{personList}</div>
     </div>
