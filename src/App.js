@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import AddContactForm from './Components/AddContactForm'
+import SearchFilter from './Components/SearchFilter'
+import ContactList from './Components/ContactList'
 
 const App = () => {
   const [persons, setPersons] = useState([{ name: 'Arto Hellas' }])
@@ -11,45 +13,12 @@ const App = () => {
   const handleNumberInput = (event) => setNewNumber(event.target.value)
   const handleFilter = (event) => setSearchFilter(event.target.value)
 
-  const addPerson = (event) => {
-    event.preventDefault()
-
-    // prevent user from adding duplicate persons to phonebook
-    const duplicatePerson = persons.find(
-      (personObject) => personObject.name === newName
-    )
-    if (duplicatePerson !== undefined) {
-      alert(`Error: ${newName} has already been added to the phonebook.`)
-      setNewNumber('')
-      return setNewName('')
-    }
-
-    const personObject = {
-      name: newName,
-      number: newNumber,
-    }
-    setPersons(persons.concat(personObject))
-    setNewName('')
-    setNewNumber('')
-  }
-
-  const personList = persons
-    .filter((person) =>
-      person.name.toLowerCase().includes(searchFilter.toLowerCase())
-    )
-    .map((person) => (
-      <p key={person.name}>
-        {person.name} {person.number}
-      </p>
-    ))
-
   return (
     <div>
       <h1>Phonebook</h1>
+
       <h2>Filter Contacts</h2>
-      <div>
-        Filter your contacts by search term: <input onChange={handleFilter} />
-      </div>
+      <SearchFilter handleFilter={handleFilter} />
 
       <h2>Add Contact</h2>
       <AddContactForm
@@ -57,11 +26,15 @@ const App = () => {
         number={newNumber}
         handleNameInput={handleNameInput}
         handleNumberInput={handleNumberInput}
-        addPerson={addPerson}
+        persons={persons}
+        setName={setNewName}
+        setNumber={setNewNumber}
+        setPersons={setPersons}
       />
+
       <h2>Contact List</h2>
-      <div>{personList}</div>
-    </div>
+      <ContactList persons={persons} searchFilter={searchFilter} />
+      </div>
   )
 }
 
