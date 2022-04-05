@@ -3,7 +3,6 @@ import AddContactForm from './Components/AddContactForm'
 import SearchFilter from './Components/SearchFilter'
 import ContactList from './Components/ContactList'
 import phoneServer from './server/phonebookServer'
-const axios = require('axios')
 
 const App = () => {
   const [persons, setPersons] = useState([{ name: 'Arto Hellas' }])

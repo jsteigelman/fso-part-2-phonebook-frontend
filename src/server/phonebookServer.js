@@ -17,4 +17,10 @@ const updateContact = (updatedPerson) => {
     return request.then((response) => response.data)
 }
 
-export default { getAllContacts, createContact, updateContact }
+const deleteContact = (id) => {
+    const url = baseUrl.concat('/').concat(id)
+    const request = axios.delete(url)
+    return request.then((response) => response.data)
+}
+
+export default { getAllContacts, createContact, updateContact, deleteContact }
