@@ -1,11 +1,12 @@
 import phoneServer from './../server/phonebookServer'
 
-const Contact = ({ person }) => {
+const Contact = ({ person, setNotification }) => {
 
     const deletePerson = (id) => {
       const message = 'Do you really want to delete this contact?'
       if (window.confirm(message)) {
-        phoneServer.deleteContact(id)
+        phoneServer
+          .deleteContact(id)
       }
     }
   

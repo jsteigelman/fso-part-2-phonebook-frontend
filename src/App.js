@@ -42,14 +42,26 @@ const App = () => {
       setNewNumber('')
       phoneServer
         .updateContact(duplicatePerson.id, changedPerson)
-        .then((returnedPerson) => {
-          setPersons(persons.map((person) => {
-            return person.id === returnedPerson.id ? returnedPerson : person
-          }))
-          setNotification(`The number for ${returnedPerson.name} was updated`)
-          setTimeout(() => {
-            setNotification(null)
-          }, 3000)
+        .then((response) => {
+          if (response.status === 200) {
+            const returnedPerson = response.data
+            setPersons(persons.map((person) => {
+              return person.id === returnedPerson.id ? returnedPerson : person
+            }))
+            setNotification(`The number for ${returnedPerson.name} was updated`)
+            setTimeout(() => {
+              setNotification(null)
+            }, 3000)
+          }
+        })
+        .catch((error) => {
+          if (error.response.status === 404) {
+            setNotification(`The contact ${duplicatePerson.name} does not exist in the phone book`)
+            setTimeout(() => {
+              setNotification(null)
+            }, 3000)
+          }
+          return console.log(error)
         })
     }
 
@@ -95,7 +107,7 @@ const App = () => {
       />
 
       <h2>Contact List</h2>
-      <ContactList persons={persons} searchFilter={searchFilter} />
+      <ContactList persons={persons} searchFilter={searchFilter} setNotification={setNotification} />
       </div>
   )
 }

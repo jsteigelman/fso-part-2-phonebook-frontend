@@ -1,24 +1,9 @@
 {
   "persons": [
     {
-      "name": "helena",
-      "number": "2",
+      "name": "HELENA",
+      "number": "",
       "id": 2
-    },
-    {
-      "name": "francois",
-      "number": "2",
-      "id": 3
-    },
-    {
-      "name": "joey",
-      "number": "1",
-      "id": 5
-    },
-    {
-      "name": "mary",
-      "number": "1",
-      "id": 6
     }
   ]
 }
