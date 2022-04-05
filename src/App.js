@@ -10,6 +10,12 @@ const App = () => {
   const [newNumber, setNewNumber] = useState('')
   const [searchFilter, setSearchFilter] = useState('')
 
+  // contact object
+  const contactObject = {
+    name: newName,
+    number: newNumber
+  }
+
   useEffect(() => {
     console.log('effect')
 
@@ -48,12 +54,6 @@ const App = () => {
       }
     }
 
-    // new contact object
-    const contactObject = {
-      name: newName,
-      number: newNumber
-    }
-
     // add contact
     phoneServer
       .createContact(contactObject)
@@ -77,14 +77,9 @@ const App = () => {
 
       <h2>Add Contact</h2>
       <AddContactForm
-        name={newName}
-        number={newNumber}
+        contactObject={contactObject}
         handleNameInput={handleNameInput}
         handleNumberInput={handleNumberInput}
-        persons={persons}
-        setName={setNewName}
-        setNumber={setNewNumber}
-        setPersons={setPersons}
         addContact={addContact}
       />
 

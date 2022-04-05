@@ -6,7 +6,6 @@ const Contact = ({ person }) => {
       const message = 'Do you really want to delete this contact?'
       if (window.confirm(message)) {
         phoneServer.deleteContact(id)
-        console.log('deleted!')
       }
     }
   

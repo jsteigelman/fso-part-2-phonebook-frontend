@@ -5,7 +5,7 @@ const ContactList = ({ persons, searchFilter }) => {
     .filter((person) =>
       person.name.toLowerCase().includes(searchFilter.toLowerCase())
     )
-    .map((person) => <Contact person={person} />)
+    .map((person) => <Contact key={person.name} person={person} />)
 
   return <div>{personList}</div>
 }
