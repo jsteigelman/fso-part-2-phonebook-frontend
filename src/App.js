@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import AddContactForm from './Components/AddContactForm'
 import SearchFilter from './Components/SearchFilter'
 import ContactList from './Components/ContactList'
+import Notification from './Components/Notification'
+
 import phoneServer from './server/phonebookServer'
 
 const App = () => {
@@ -9,6 +11,7 @@ const App = () => {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [searchFilter, setSearchFilter] = useState('')
+  const [notification, setNotification] = useState(null)
 
   // contact object
   const contactObject = {
@@ -37,12 +40,16 @@ const App = () => {
       const changedPerson = {...duplicatePerson, number: newNumber}
       setNewName('')
       setNewNumber('')
-      return phoneServer
+      phoneServer
         .updateContact(duplicatePerson.id, changedPerson)
         .then((returnedPerson) => {
           setPersons(persons.map((person) => {
             return person.id === returnedPerson.id ? returnedPerson : person
           }))
+          setNotification(`The number for ${returnedPerson.name} was updated`)
+          setTimeout(() => {
+            setNotification(null)
+          }, 3000)
         })
     }
 
@@ -61,6 +68,10 @@ const App = () => {
         setPersons(persons.concat(returnedPerson))
         setNewName('')
         setNewNumber('')
+        setNotification(`${returnedPerson.name} was added to the phone book`)
+        setTimeout(() => {
+          setNotification(null)
+        }, 3000)
       })
   }
 
@@ -71,7 +82,7 @@ const App = () => {
   return (
     <div>
       <h1>Phonebook</h1>
-
+      <Notification message={notification} />
       <h2>Filter Contacts</h2>
       <SearchFilter handleFilter={handleFilter} />
 
