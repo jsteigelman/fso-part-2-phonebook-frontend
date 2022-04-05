@@ -15,7 +15,7 @@ const createContact = (person) => {
 const updateContact = (id, person) => {
     const url = baseUrl.concat('/').concat(id)
     const request = axios.put(url, person)
-    return request.then((response) => console.log(response))
+    return request.then((response) => response.data)
 }
 
 const deleteContact = (id) => {

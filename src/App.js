@@ -26,18 +26,25 @@ const App = () => {
       (personObject) => personObject.name === newName
     )
 
+    // overwrite existing user's phone number
+    const changeNumber = (duplicatePerson) => {
+      const changedPerson = {...duplicatePerson, number: newNumber}
+      setNewName('')
+      setNewNumber('')
+      return phoneServer
+        .updateContact(duplicatePerson.id, changedPerson)
+        .then((returnedPerson) => {
+          setPersons(persons.map((person) => {
+            return person.id === returnedPerson.id ? returnedPerson : person
+          }))
+        })
+    }
+
     // if contact already exists, ask if user wants to overwrite their phone number
     if (duplicatePerson !== undefined) {
       const message = `${newName} is already in your phonebook. Update the phone number?`
       if (window.confirm(message)) {
-        const changedPerson = {...duplicatePerson, number: newNumber}
-        return phoneServer
-          .updateContact(duplicatePerson.id, changedPerson)
-          .then((returnedPerson) => {
-            setPersons(persons.map((person) => {
-              return person.id === duplicatePerson.id ? duplicatePerson : person
-            }))
-          })
+        return changeNumber(duplicatePerson)
       }
     }
 
