@@ -12,9 +12,10 @@ const createContact = (person) => {
     return request.then((response) => response.data)
 }
 
-const updateContact = (updatedPerson) => {
-    const request = axios.put(baseUrl, updatedPerson)
-    return request.then((response) => response.data)
+const updateContact = (id, person) => {
+    const url = baseUrl.concat('/').concat(id)
+    const request = axios.put(url, person)
+    return request.then((response) => console.log(response))
 }
 
 const deleteContact = (id) => {

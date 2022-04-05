@@ -10,8 +10,6 @@ const Contact = ({ person }) => {
       }
     }
   
-    console.log('the person is: ', person)
-  
     return (
       <div>
         <p key={person.name}>{person.name} {person.number}</p>

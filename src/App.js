@@ -18,6 +18,45 @@ const App = () => {
       .then((existingContacts) => setPersons(existingContacts))
   }, [])
 
+  const addContact = (event) => {
+    event.preventDefault()
+
+    // check if contact already exists in phone book
+    const duplicatePerson = persons.find(
+      (personObject) => personObject.name === newName
+    )
+
+    // if contact already exists, ask if user wants to overwrite their phone number
+    if (duplicatePerson !== undefined) {
+      const message = `${newName} is already in your phonebook. Update the phone number?`
+      if (window.confirm(message)) {
+        const changedPerson = {...duplicatePerson, number: newNumber}
+        return phoneServer
+          .updateContact(duplicatePerson.id, changedPerson)
+          .then((returnedPerson) => {
+            setPersons(persons.map((person) => {
+              return person.id === duplicatePerson.id ? duplicatePerson : person
+            }))
+          })
+      }
+    }
+
+    // new contact object
+    const contactObject = {
+      name: newName,
+      number: newNumber
+    }
+
+    // add contact
+    phoneServer
+      .createContact(contactObject)
+      .then(returnedPerson => {
+        setPersons(persons.concat(returnedPerson))
+        setNewName('')
+        setNewNumber('')
+      })
+  }
+
   const handleNameInput = (event) => setNewName(event.target.value)
   const handleNumberInput = (event) => setNewNumber(event.target.value)
   const handleFilter = (event) => setSearchFilter(event.target.value)
@@ -39,6 +78,7 @@ const App = () => {
         setName={setNewName}
         setNumber={setNewNumber}
         setPersons={setPersons}
+        addContact={addContact}
       />
 
       <h2>Contact List</h2>
