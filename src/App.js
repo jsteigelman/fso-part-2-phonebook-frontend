@@ -92,7 +92,7 @@ const App = () => {
   const handleFilter = (event) => setSearchFilter(event.target.value)
 
   return (
-    <div>
+    <div className="appContainer">
       <h1>Phonebook</h1>
       <Notification message={notification} />
       <h2>Filter Contacts</h2>

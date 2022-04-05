@@ -11,8 +11,11 @@ const Contact = ({ person, setNotification }) => {
     }
   
     return (
-      <div>
-        <p key={person.name}>{person.name} {person.number}</p>
+      <div className="contact" >
+        <div className="contact__person">
+        <p id="name">{person.name}</p>
+        <p id="number">{person.number}</p>
+        </div>
         <button onClick={() => deletePerson(person.id)}>Delete</button>
       </div>
     )

@@ -1,9 +1,97 @@
+:root {
+    --border-radius-large: 24px;
+    --border-radius-small: 12px;
+    --button-height: 40px;
+
+}
+
+body {
+    background-color: #F35C5E;
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    justify-content: center;
+}
+
+/* app */
+.appContainer {
+    width: 300px;
+}
+
+/* contact item */
+
+.contact {
+    background-color: #FEFEFE;
+    border-radius: var(--border-radius-large);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px 0;
+    padding: 20px;
+}
+
+.contact button {
+    align-self: center;
+    background-color: #D3E6FF;
+    border: none;
+    border-radius: var(--border-radius-small);
+    color: #2E3744;
+    font-size: 16px;
+    height: var(--button-height);
+    width: 80px;
+}
+
+.contact__person #name {
+    color: #2E3744;
+    font-size: 24px;
+    font-weight: 600;
+    margin: 0 0 8px;
+}
+
+.contact__person #number {
+    color: #C5C5C5;
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0;
+
+}
+
+/* add contact */
+
+div.addContact__input {
+    width: 100%;
+    padding: 3px;
+    margin-top: 0;
+}
+
+.addContact #inputContact {
+    background-color: #fff;
+    border: 3px solid white;
+    border-radius: var(--border-radius-small);
+    margin: 10px 0;
+    padding: 12px;
+    width: calc(100% - 24px);
+}
+
+#inputContact:focus {
+    border: 3px solid black;
+}
+
+.addContact button {
+    background-color: #FF996C;
+    border: none;
+    border-radius: var(--border-radius-small);
+    height: var(--button-height);
+    width: 100%;
+}
+
+/* notifications */
+
 .notification {
     color: red;
     background: lightgrey;
     font-size: 20px;
     border-style: solid;
-    border-radius: 5px;
+    border-radius: var(--border-radius-small);
     padding: 10px;
     margin-bottom: 10px;
 }

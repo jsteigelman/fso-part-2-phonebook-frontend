@@ -1,7 +1,12 @@
 {
   "persons": [
     {
-      "name": "HELENA",
+      "name": "Joe Biden",
+      "number": "917 123 1234",
+      "id": 1
+    },
+    {
+      "name": "",
       "number": "",
       "id": 2
     }
