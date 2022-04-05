@@ -1,3 +1,6 @@
+import phoneServer from './../server/phonebookServer'
+
+
 const AddContactForm = (props) => {
 
   const addPerson = (event) => {
@@ -18,9 +21,13 @@ const AddContactForm = (props) => {
       number: props.number,
     }
 
-    props.setPersons(props.persons.concat(personObject))
-    props.setName('')
-    props.setNumber('')
+    phoneServer
+      .createContact(personObject)
+      .then(returnedPerson => {
+        props.setPersons(props.persons.concat(returnedPerson))
+        props.setName('')
+        props.setNumber('')
+      })
   }
 
   return (

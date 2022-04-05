@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import AddContactForm from './Components/AddContactForm'
 import SearchFilter from './Components/SearchFilter'
 import ContactList from './Components/ContactList'
+import phoneServer from './server/phonebookServer'
 const axios = require('axios')
 
 const App = () => {
@@ -12,15 +13,10 @@ const App = () => {
 
   useEffect(() => {
     console.log('effect')
-    axios
-      .get('http://localhost:3001/persons')
-      .then((response) => {
-        console.log(response)
-        setPersons(response.data)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+
+    phoneServer
+      .getAllContacts()
+      .then((existingContacts) => setPersons(existingContacts))
   }, [])
 
   const handleNameInput = (event) => setNewName(event.target.value)
