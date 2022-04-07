@@ -1,37 +1,48 @@
 :root {
-    --border-radius-large: 16px;
-    --border-radius-small: 12px;
     --button-height: 40px;
     --font-size-h2: 20px;
 
 }
 
 body {
-    background-color: #F35C5E;
-    background-color: #F2F0FE;
-
+    background-color: #2298FF;
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
 }
 
 /* app */
+
 .appContainer {
     width: 300px;
 }
 
+.appContainer h1 {
+    color: #fff;
+    font-size: 50px;
+    text-align: center;
+}
 .appContainer h2 {
     font-size: var(--font-size-h2);
     color: black;
     text-align: center;
+}
 
+#filterHeader {
+    margin-top: 0;
 }
 
 /* contact item */
 
+#contactListHeader {
+    color: white;
+    font-size: 34px;
+}
+
 .contact {
-    background-color: #FEFEFE;
-    border-radius: var(--border-radius-large);
+    align-items: center;
+    background-color: #fff;
+    border: 4px solid black;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -43,18 +54,29 @@ body {
     align-self: center;
     background-color: #D3E6FF;
     border: none;
-    border-radius: var(--border-radius-small);
     color: #2E3744;
     font-size: 16px;
     height: var(--button-height);
     width: 80px;
 }
 
+.contact img {
+    /* margin-right: 20px; */
+    width: 40px;
+    height: 40px;
+}
+
+.contact__person {
+    word-break: break-all;
+    margin: 0 6px;
+}
+
 .contact__person #name {
-    color: #2E3744;
-    font-size: 20px;
+    color: #000;
+    font-size: 18px;
     font-weight: 600;
-    margin: 0 0 6px;
+    margin: 0 0 2px;
+    text-align: center;
 }
 
 .contact__person #number {
@@ -62,16 +84,25 @@ body {
     font-size: 16px;
     font-weight: 500;
     margin: 0;
-
+    text-align: center;
 }
+
+.inputContainer {
+    box-sizing: border-box;
+    background-color: #FD757B;
+    background-image: linear-gradient(#FD757B, #DC74FC);
+    border: 4px solid black;
+    padding: 20px;
+}
+
 
 /* search contacts */
 
 .search input {
-    border: none;
-    border-radius: var(--border-radius-small);
+    box-sizing: border-box;
+    border: 2px solid black;
     padding: 12px;
-    width: calc(100% - 24px);
+    width: 100%;
 }
 
 /* add contact */
@@ -83,13 +114,11 @@ div.addContact__input {
 }
 
 .addContact #inputContact {
-    background-color: #fff;
-    /* border: 3px solid white; */
-    border: none;
-    border-radius: var(--border-radius-small);
+    box-sizing: border-box;
+    border: 2px solid black;
     margin: 0 0 8px;
     padding: 12px;
-    width: calc(100% - 24px);
+    width: 100%;
 }
 
 #inputContact:focus {
@@ -97,20 +126,36 @@ div.addContact__input {
 }
 
 .addContact button {
-    background-color: #6152BE;
-    border: none;
-    border-radius: var(--border-radius-small);
-    height: var(--button-height);
+    background-color: #F9D745;
+    box-sizing: border-box;
+    border: 2px solid black;
+    padding: 12px;
     width: 100%;
+
 }
 
 /* notifications */
 
 .notification {
-    background-color: #DB8673;
-    border-radius: var(--border-radius-small);
+    background-color: #FF4E51;
+    box-sizing: border-box;
+    border: 2px solid black;
     color: black;
     font-size: 16px;
-    padding: 10px;
     margin-bottom: 10px;
+    padding: 12px;
+    width: 100%;
+
+}
+
+/* desktop */
+@media screen and (min-width: 600px) {
+    .appContainer {
+        width: 420px;
+    }
+
+    .appContainer h1 {
+        font-size: 72px;
+        margin: 30px 0;
+    }
 }

@@ -7,7 +7,7 @@ import Notification from './Components/Notification'
 import phoneServer from './server/phonebookServer'
 
 const App = () => {
-  const [persons, setPersons] = useState([{ name: 'Arto Hellas' }])
+  const [persons, setPersons] = useState([{ name: 'Arto Hellas', number: '123' }])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [searchFilter, setSearchFilter] = useState('')
@@ -24,7 +24,9 @@ const App = () => {
 
     phoneServer
       .getAllContacts()
-      .then((existingContacts) => setPersons(existingContacts))
+      .then((existingContacts) => {
+        console.log('existing contacts is: ', existingContacts)
+        return setPersons(existingContacts)})
   }, [])
 
   const addContact = (event) => {
@@ -94,19 +96,20 @@ const App = () => {
   return (
     <div className="appContainer">
       <h1>Phonebook</h1>
-      <Notification message={notification} />
-      <h2>Filter Contacts</h2>
-      <SearchFilter handleFilter={handleFilter} />
+      <div className="inputContainer">
+        <Notification message={notification} />
+        <h2 id="filterHeader">Filter Contacts</h2>
+        <SearchFilter handleFilter={handleFilter} />
+        <h2>Add Contact</h2>
+        <AddContactForm
+          contactObject={contactObject}
+          handleNameInput={handleNameInput}
+          handleNumberInput={handleNumberInput}
+          addContact={addContact}
+        />
+      </div>
 
-      <h2>Add Contact</h2>
-      <AddContactForm
-        contactObject={contactObject}
-        handleNameInput={handleNameInput}
-        handleNumberInput={handleNumberInput}
-        addContact={addContact}
-      />
-
-      <h2>Contact List</h2>
+      <h2 id="contactListHeader">Contact List</h2>
       <ContactList persons={persons} searchFilter={searchFilter} setNotification={setNotification} />
       </div>
   )
