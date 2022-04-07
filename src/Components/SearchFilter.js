@@ -1,8 +1,7 @@
 const SearchFilter = (props) => {
   return (
-    <div>
-      Filter your contacts by search term:{' '}
-      <input onChange={props.handleFilter} />
+    <div className="search">
+      <input onChange={props.handleFilter} placeholder="Search for a contact..."/>
     </div>
   )
 }

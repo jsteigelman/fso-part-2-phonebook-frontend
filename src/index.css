@@ -1,12 +1,15 @@
 :root {
-    --border-radius-large: 24px;
+    --border-radius-large: 16px;
     --border-radius-small: 12px;
     --button-height: 40px;
+    --font-size-h2: 20px;
 
 }
 
 body {
     background-color: #F35C5E;
+    background-color: #F2F0FE;
+
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
@@ -17,6 +20,13 @@ body {
     width: 300px;
 }
 
+.appContainer h2 {
+    font-size: var(--font-size-h2);
+    color: black;
+    text-align: center;
+
+}
+
 /* contact item */
 
 .contact {
@@ -25,7 +35,7 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin: 20px 0;
+    margin: 10px 0;
     padding: 20px;
 }
 
@@ -42,32 +52,42 @@ body {
 
 .contact__person #name {
     color: #2E3744;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 600;
-    margin: 0 0 8px;
+    margin: 0 0 6px;
 }
 
 .contact__person #number {
-    color: #C5C5C5;
-    font-size: 20px;
+    color: #aab3bf;
+    font-size: 16px;
     font-weight: 500;
     margin: 0;
 
+}
+
+/* search contacts */
+
+.search input {
+    border: none;
+    border-radius: var(--border-radius-small);
+    padding: 12px;
+    width: calc(100% - 24px);
 }
 
 /* add contact */
 
 div.addContact__input {
     width: 100%;
-    padding: 3px;
+    padding: 0;
     margin-top: 0;
 }
 
 .addContact #inputContact {
     background-color: #fff;
-    border: 3px solid white;
+    /* border: 3px solid white; */
+    border: none;
     border-radius: var(--border-radius-small);
-    margin: 10px 0;
+    margin: 0 0 8px;
     padding: 12px;
     width: calc(100% - 24px);
 }
@@ -77,7 +97,7 @@ div.addContact__input {
 }
 
 .addContact button {
-    background-color: #FF996C;
+    background-color: #6152BE;
     border: none;
     border-radius: var(--border-radius-small);
     height: var(--button-height);
@@ -87,11 +107,10 @@ div.addContact__input {
 /* notifications */
 
 .notification {
-    color: red;
-    background: lightgrey;
-    font-size: 20px;
-    border-style: solid;
+    background-color: #DB8673;
     border-radius: var(--border-radius-small);
+    color: black;
+    font-size: 16px;
     padding: 10px;
     margin-bottom: 10px;
 }
