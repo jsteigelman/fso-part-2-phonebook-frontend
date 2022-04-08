@@ -5,7 +5,8 @@
 }
 
 body {
-    background-color: #2298FF;
+    background-color: #FD757B;
+    background-image: linear-gradient(#FD757B, #DC74FC);
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
@@ -42,7 +43,7 @@ body {
 .contact {
     align-items: center;
     background-color: #fff;
-    border: 4px solid black;
+    border: 2px solid black;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -80,7 +81,7 @@ body {
 }
 
 .contact__person #number {
-    color: #aab3bf;
+    color: #757575;
     font-size: 16px;
     font-weight: 500;
     margin: 0;
@@ -89,9 +90,9 @@ body {
 
 .inputContainer {
     box-sizing: border-box;
-    background-color: #FD757B;
-    background-image: linear-gradient(#FD757B, #DC74FC);
-    border: 4px solid black;
+    background-color: #f9d745;
+    /* background-image: linear-gradient(#FD757B, #DC74FC); */
+    border: 2px solid black;
     padding: 20px;
 }
 
@@ -101,6 +102,7 @@ body {
 .search input {
     box-sizing: border-box;
     border: 2px solid black;
+    font-size: 16px;
     padding: 12px;
     width: 100%;
 }
@@ -116,6 +118,7 @@ div.addContact__input {
 .addContact #inputContact {
     box-sizing: border-box;
     border: 2px solid black;
+    font-size: 16px;
     margin: 0 0 8px;
     padding: 12px;
     width: 100%;
@@ -126,12 +129,13 @@ div.addContact__input {
 }
 
 .addContact button {
-    background-color: #F9D745;
+    background-color: #FD757B;
     box-sizing: border-box;
     border: 2px solid black;
+    font-size: 18px;
+    font-weight: 600;
     padding: 12px;
     width: 100%;
-
 }
 
 /* notifications */
