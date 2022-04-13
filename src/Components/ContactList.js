@@ -9,7 +9,7 @@ const ContactList = ({ persons, searchFilter, setNotification }) => {
     )
     .map((person) => <Contact key={person.name} person={person} setNotification={setNotification} />)
 
-  return <div>{personList}</div>
+  return <div class="contactListContainer">{personList}</div>
 }
 
 export default ContactList

@@ -1,12 +1,13 @@
 :root {
     --button-height: 40px;
     --font-size-h2: 20px;
+    background-color: #FF7575;
+    background-image: linear-gradient(#FD757B, #DC74FC);
 
+    /* background-image: linear-gradient(#1C91FF, #D675FF); */
 }
 
 body {
-    background-color: #FD757B;
-    background-image: linear-gradient(#FD757B, #DC74FC);
     font-family: Arial, Helvetica, sans-serif;
     display: flex;
     justify-content: center;
@@ -34,11 +35,6 @@ body {
 }
 
 /* contact item */
-
-#contactListHeader {
-    color: white;
-    font-size: 34px;
-}
 
 .contact {
     align-items: center;
@@ -91,11 +87,21 @@ body {
 .inputContainer {
     box-sizing: border-box;
     background-color: #f9d745;
-    /* background-image: linear-gradient(#FD757B, #DC74FC); */
+    /* background-image: linear-gradient(#1C91FF, #D675FF); */
     border: 2px solid black;
     padding: 20px;
 }
 
+/* contact list */
+
+#contactListHeader {
+    color: white;
+    font-size: 34px;
+}
+
+.contactListContainer {
+    margin-bottom: 180px;
+}
 
 /* search contacts */
 
