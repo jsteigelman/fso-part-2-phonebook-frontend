@@ -16,3 +16,4 @@ The course is worth 5-13 credits, and the content is the same as in the Full sta
 
 ## Built With
 * [React](https://reactjs.org/) - React is a JavaScript library for building user interfaces
+* [axios](https://www.npmjs.com/package/axios) - axios is a promise based HTTP client for the browser and node.js
