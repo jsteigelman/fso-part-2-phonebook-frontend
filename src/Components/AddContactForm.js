@@ -4,12 +4,14 @@ const AddContactForm = (props) => {
       <form onSubmit={props.addContact}>
         <div className="addContact__input">
           <input
+            autocomplete="off" 
             value={props.contactObject.name}
             onChange={props.handleNameInput}
             placeholder="Enter a name..."
             id="inputContact"
           />
           <input
+            autocomplete="off" 
             value={props.contactObject.number}
             onChange={props.handleNumberInput}
             placeholder="Enter a number..."

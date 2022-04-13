@@ -106,9 +106,7 @@ const App = () => {
       <h1>Phonebook</h1>
       <div className='inputContainer'>
         <Notification message={notification} />
-        <h2 id='filterHeader'>Filter Contacts</h2>
-        <SearchFilter handleFilter={handleFilter} />
-        <h2>Add Contact</h2>
+        <h2 id="addContactHeader">Add Contact</h2>
         <AddContactForm
           contactObject={contactObject}
           handleNameInput={handleNameInput}
@@ -118,6 +116,8 @@ const App = () => {
       </div>
 
       <h2 id='contactListHeader'>Contact List</h2>
+      <SearchFilter handleFilter={handleFilter} />
+
       <ContactList
         persons={persons}
         searchFilter={searchFilter}
