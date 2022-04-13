@@ -8,11 +8,11 @@ The course covers testing, configuration and environment management, and the use
 
 The course is worth 5-13 credits, and the content is the same as in the Full stack course held at the Department of Computer Science at the University of Helsinki in Spring 2020. There is also an associated project that is worth 1-10 credits.
 
-<!-- ## Live Site URL
+## Live Site URL
+[https://steigelman-phonebook.herokuapp.com/](https://steigelman-phonebook.herokuapp.com/)
 
-
-## Website Preview
-
+<!-- ## Website Preview
  -->
+
 ## Built With
 * [React](https://reactjs.org/) - React is a JavaScript library for building user interfaces
