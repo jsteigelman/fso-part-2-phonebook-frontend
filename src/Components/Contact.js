@@ -2,11 +2,12 @@ import phoneServer from './../server/phonebookServer'
 import avatar_icon from './../images/avatar_icon_yellow.png'
 import delete_icon from './../images/delete_icon.png'
 
-const Contact = ({ person, setNotification }) => {
+const Contact = ({ person, setNotification, onPersonWasDeleted }) => {
   const deletePerson = (id) => {
     const message = 'Do you really want to delete this contact?'
     if (window.confirm(message)) {
       phoneServer.deleteContact(id)
+      onPersonWasDeleted(id)
     }
   }
 

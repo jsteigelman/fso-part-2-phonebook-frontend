@@ -7,7 +7,9 @@ import Notification from './Components/Notification'
 import phoneServer from './server/phonebookServer'
 
 const App = () => {
-  const [persons, setPersons] = useState([{ name: 'Arto Hellas', number: '123' }])
+  const [persons, setPersons] = useState([
+    { name: 'Arto Hellas', number: '123' },
+  ])
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
   const [searchFilter, setSearchFilter] = useState('')
@@ -16,18 +18,22 @@ const App = () => {
   // contact object
   const contactObject = {
     name: newName,
-    number: newNumber
+    number: newNumber,
   }
 
   useEffect(() => {
     console.log('effect')
 
-    phoneServer
-      .getAllContacts()
-      .then((existingContacts) => {
-        console.log('existing contacts is: ', existingContacts)
-        return setPersons(existingContacts)})
+    phoneServer.getAllContacts().then((existingContacts) => {
+      console.log('existing contacts is: ', existingContacts)
+      return setPersons(existingContacts)
+    })
   }, [])
+
+  const onPersonWasDeleted = (id) => {
+    // remove user that was successfully removed
+    setPersons(persons.filter((person) => person.id !== id))
+  }
 
   const addContact = (event) => {
     event.preventDefault()
@@ -39,7 +45,7 @@ const App = () => {
 
     // overwrite existing user's phone number
     const changeNumber = (duplicatePerson) => {
-      const changedPerson = {...duplicatePerson, number: newNumber}
+      const changedPerson = { ...duplicatePerson, number: newNumber }
       setNewName('')
       setNewNumber('')
       phoneServer
@@ -47,9 +53,11 @@ const App = () => {
         .then((response) => {
           if (response.status === 200) {
             const returnedPerson = response.data
-            setPersons(persons.map((person) => {
-              return person.id === returnedPerson.id ? returnedPerson : person
-            }))
+            setPersons(
+              persons.map((person) => {
+                return person.id === returnedPerson.id ? returnedPerson : person
+              })
+            )
             setNotification(`The number for ${returnedPerson.name} was updated`)
             setTimeout(() => {
               setNotification(null)
@@ -58,7 +66,9 @@ const App = () => {
         })
         .catch((error) => {
           if (error.response.status === 404) {
-            setNotification(`The contact ${duplicatePerson.name} does not exist in the phone book`)
+            setNotification(
+              `The contact ${duplicatePerson.name} does not exist in the phone book`
+            )
             setTimeout(() => {
               setNotification(null)
             }, 3000)
@@ -76,17 +86,15 @@ const App = () => {
     }
 
     // add contact
-    phoneServer
-      .createContact(contactObject)
-      .then(returnedPerson => {
-        setPersons(persons.concat(returnedPerson))
-        setNewName('')
-        setNewNumber('')
-        setNotification(`${returnedPerson.name} was added to the phone book`)
-        setTimeout(() => {
-          setNotification(null)
-        }, 3000)
-      })
+    phoneServer.createContact(contactObject).then((returnedPerson) => {
+      setPersons(persons.concat(returnedPerson))
+      setNewName('')
+      setNewNumber('')
+      setNotification(`${returnedPerson.name} was added to the phone book`)
+      setTimeout(() => {
+        setNotification(null)
+      }, 3000)
+    })
   }
 
   const handleNameInput = (event) => setNewName(event.target.value)
@@ -94,11 +102,11 @@ const App = () => {
   const handleFilter = (event) => setSearchFilter(event.target.value)
 
   return (
-    <div className="appContainer">
+    <div className='appContainer'>
       <h1>Phonebook</h1>
-      <div className="inputContainer">
+      <div className='inputContainer'>
         <Notification message={notification} />
-        <h2 id="filterHeader">Filter Contacts</h2>
+        <h2 id='filterHeader'>Filter Contacts</h2>
         <SearchFilter handleFilter={handleFilter} />
         <h2>Add Contact</h2>
         <AddContactForm
@@ -109,9 +117,14 @@ const App = () => {
         />
       </div>
 
-      <h2 id="contactListHeader">Contact List</h2>
-      <ContactList persons={persons} searchFilter={searchFilter} setNotification={setNotification} />
-      </div>
+      <h2 id='contactListHeader'>Contact List</h2>
+      <ContactList
+        persons={persons}
+        searchFilter={searchFilter}
+        setNotification={setNotification}
+        onPersonWasDeleted={onPersonWasDeleted}
+      />
+    </div>
   )
 }
 
