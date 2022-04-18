@@ -22,7 +22,7 @@ const App = () => {
   }
 
   useEffect(() => {
-    console.log('effect')
+    console.log('useEffect is running')
 
     phoneServer.getAllContacts().then((existingContacts) => {
       console.log('existing contacts is: ', existingContacts)
