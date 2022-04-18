@@ -73,7 +73,7 @@ const App = () => {
               setNotification(null)
             }, 3000)
           }
-          return console.log(error)
+          return console.log('the error is: ', error)
         })
     }
 

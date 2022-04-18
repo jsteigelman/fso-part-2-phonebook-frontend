@@ -17,9 +17,8 @@ const createContact = (person) => {
   .catch((error) => console.log(error))
 }
 
-const updateContact = (id, person) => {
-  const url = baseUrl.concat('/').concat(id)
-  const request = axios.put(url, person)
+const updateContact = (id, updatedData) => {
+  const request = axios.put(`${baseUrl}/${id}`, updatedData)
   return request
     .then((response) => response)
     .catch((error) => console.log(error))
