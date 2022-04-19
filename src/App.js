@@ -73,7 +73,14 @@ const App = () => {
             setTimeout(() => {
               setNotification(null)
             }, 3000)
+          } else if (error.response.status === 500) {
+            const message = 'Oops! The number must be at least 10 characters long.'
+            setNotification(message)
+            setTimeout(() => {
+              setNotification(null)
+            }, 3000)
           }
+
           return console.log('the error is: ', error)
         })
     }
@@ -109,7 +116,7 @@ const App = () => {
       }, 3000)
       setNewName('')
       setNewNumber('')
-      return console.log('Error: ', error.response)
+      return console.log('Error: ', error)
 
     })
   }
