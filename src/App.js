@@ -25,7 +25,7 @@ const App = () => {
     console.log('useEffect is running')
 
     phoneServer.getAllContacts().then((existingContacts) => {
-      console.log('existing contacts is: ', existingContacts)
+      // console.log('existing contacts is: ', existingContacts)
       return setPersons(existingContacts)
     })
   }, [])
@@ -45,6 +45,7 @@ const App = () => {
 
     // overwrite existing user's phone number
     const changeNumber = (duplicatePerson) => {
+      console.log('changeNumber is running!')
       const changedPerson = { ...duplicatePerson, number: newNumber }
       setNewName('')
       setNewNumber('')
@@ -86,7 +87,13 @@ const App = () => {
     }
 
     // add contact
-    phoneServer.createContact(contactObject).then((returnedPerson) => {
+    phoneServer.createContact(contactObject)
+    .then((returnedPerson) => {
+      if (returnedPerson === undefined) {
+        setNewName('')
+        setNewNumber('')
+        return console.log('Person was undefined')
+      }
       setPersons(persons.concat(returnedPerson))
       setNewName('')
       setNewNumber('')
@@ -94,6 +101,16 @@ const App = () => {
       setTimeout(() => {
         setNotification(null)
       }, 3000)
+    })
+    .catch(error => {
+      setNotification('Error: Minimum length for Name is 2. Minimum length for Number is 10.')
+      setTimeout(() => {
+        setNotification(null)
+      }, 3000)
+      setNewName('')
+      setNewNumber('')
+      return console.log('Error: ', error.response)
+
     })
   }
 

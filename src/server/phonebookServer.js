@@ -7,14 +7,21 @@ const getAllContacts = () => {
     .then((response) => {
       console.log('response from GET all contacts: ', response.data)
       return response.data
-    }).catch((error) => console.log(error))
+    })
+    .catch((error) => console.log(error))
 }
+// const create = newObject => {
+//   const request = axios.post(baseUrl, newObject)
+//   return request.then(response => response.data)
+// }
 
 const createContact = (person) => {
   const request = axios.post(baseUrl, person)
   return request
   .then((response) => response.data)
-  .catch((error) => console.log(error))
+  // .catch((error) => {
+
+  //   return console.log(error)})
 }
 
 const updateContact = (id, updatedData) => {
