@@ -1,6 +1,8 @@
 # Full Stack Open - Part 2 (Phonebook App Frontend)
 This project is currently in progress!
 
+This project is incorporated into my backend code that is saved in a seperate repository: [https://github.com/jsteigelman/fso-part-3-phonebook-backend/blob/main/README.md](https://github.com/jsteigelman/fso-part-3-phonebook-backend/blob/main/README.md)
+
 ## About Full Stack Open
 [Full Stack Open](https://fullstackopen.com/en/) serves as an introduction to modern web application development with JavaScript. The main focus is on building single page applications with ReactJS that use REST APIs built with Node.js. The course also contains a section on GraphQL, a modern alternative to REST APIs.
 
