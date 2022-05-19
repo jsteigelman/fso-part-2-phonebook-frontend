@@ -31,3 +31,7 @@ This project was completed for Full Stack Open.
 The course covers testing, configuration and environment management, and the use of MongoDB for storing the application’s data.
 
 The course is worth 5-13 credits, and the content is the same as in the Full stack course held at the Department of Computer Science at the University of Helsinki in Spring 2020. There is also an associated project that is worth 1-10 credits.
+
+## Website Preview
+<img width="900" alt="phonebook" src="https://user-images.githubusercontent.com/65603938/169331130-3f62d09f-69f8-4b56-8388-3e9f6fd38e54.png">
+
