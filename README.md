@@ -11,6 +11,17 @@ The full project (backend and frontend) is saved in a seperate repository: [http
 <!-- ## Website Preview
  -->
  
+ ## Functionality
+* User can `create` a contact
+* User can `read` all the contacts currently stored in the phonebook
+* User can `update` a contact by entering an existing contact name, with a new number, in the "Add Contact" section
+* User can `delete` a contact
+* User can search for a contact in the phonebook
+
+## Built With
+* [React](https://reactjs.org/) - React is a JavaScript library for building user interfaces
+* [axios](https://www.npmjs.com/package/axios) - axios is a promise based HTTP client for the browser and node.js
+
  ## About Full Stack Open
 
 This project was completed for Full Stack Open.
@@ -20,7 +31,3 @@ This project was completed for Full Stack Open.
 The course covers testing, configuration and environment management, and the use of MongoDB for storing the application’s data.
 
 The course is worth 5-13 credits, and the content is the same as in the Full stack course held at the Department of Computer Science at the University of Helsinki in Spring 2020. There is also an associated project that is worth 1-10 credits.
-
-## Built With
-* [React](https://reactjs.org/) - React is a JavaScript library for building user interfaces
-* [axios](https://www.npmjs.com/package/axios) - axios is a promise based HTTP client for the browser and node.js
